@@ -139,35 +139,55 @@
         margin: 10px 0;
       }
     }
-    .social-links {
-  margin-top: 20px;
+    /* ===== SOCIAL MEDIA BUTTONS (MATCH SITE DESIGN) ===== */
+
+.social-links {
+  margin-top: 25px;
 }
 
 .social-btn {
   display: inline-block;
-  margin: 8px 10px 8px 0;
-  padding: 12px 18px;
+  margin: 8px 12px 8px 0;
+  padding: 12px 22px;
+  background-color: #0a6c5d;
   color: white;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
   font-size: 15px;
-}
-
-.social-btn.x {
-  background-color: #000000;
-}
-
-.social-btn.facebook {
-  background-color: #1877f2;
-}
-
-.social-btn.instagram {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  transition: background-color 0.3s ease;
 }
 
 .social-btn:hover {
-  opacity: 0.85;
+  background-color: #085a4d;
+}
+
+/* Optional icons feel (subtle) */
+.social-btn::before {
+  margin-right: 8px;
+}
+
+.social-btn.x::before {
+  content: "𝕏";
+}
+
+.social-btn.facebook::before {
+  content: "f";
+}
+
+.social-btn.instagram::before {
+  content: "📸";
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+  .social-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
 }
 
   </style>
@@ -273,5 +293,6 @@
 
 </body>
 </html>
+
 
 
