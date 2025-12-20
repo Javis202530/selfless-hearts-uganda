@@ -244,28 +244,28 @@ who need it most.
     <img alt="Fees image placeholder">
     <h3>Pay school fees</h3>
     <p>UGX  400,000 / USD 100</p>
-    <button onclick="openDonate(400000)">DONATE NOW</button>
+    <button onclick="openDonate(100, 'USD')">DONATE NOW</button>
   </div>
 
   <div class="product">
     <img alt="Requirements placeholder">
     <h3>School Requirements</h3>
     <p>UGX 60,000 / USD 15</p>
-    <button onclick="openDonate(60000)">DONATE NOW</button>
+    <button onclick="openDonate(15,'USD')">DONATE NOW</button>
   </div>
 
   <div class="product">
     <img alt="patient placeholder">
     <h3>Medical support for patient</h3>
     <p>UGX 100,000 / USD 25</p>
-    <button onclick="openDonate(100000)">DONATE NOW</button>
+    <button onclick="openDonate(25,'USD')">DONATE NOW</button>
   </div>
 
   <div class="product">
     <img alt="girls requirement placeholder">
     <h3>Pads and requirements for a girl</h3>
     <p>UGX 200,000 / USD 50</p>
-    <button onclick="openDonate(200000)">DONATE NOW</button>
+    <button onclick="openDonate(50,'USD')">DONATE NOW</button>
   </div>
   </ul>
   </div>
@@ -278,28 +278,28 @@ who need it most.
     <img alt="Tshirt image placeholder">
     <h3>Organisation T-shirt</h3>
     <p>UGX  40,000 / USD 10</p>
-    <button onclick="openDonate(40000)">Buy Tshirt</button>
+    <button onclick="openDonate(10,'USD')">Buy Tshirt</button>
   </div>
 
   <div class="product">
     <img alt="Requirements placeholder">
     <h3>Portrait</h3>
     <p>UGX 200,000 / USD 50</p>
-    <button onclick="openDonate(200000)">Buy Portrait</button>
+    <button onclick="openDonate(50,'USD')">Buy Portrait</button>
   </div>
 
   <div class="product">
     <img alt="Bangles placeholder">
     <h3>Bangles,necklaces and more</h3>
     <p>UGX 50,000 / USD 12</p>
-    <button onclick="openDonate(50000)">Buy one</button>
+    <button onclick="openDonate(12,'USD')">Buy one</button>
   </div>
 
   <div class="product">
     <img alt="artistic work placeholder">
     <h3>artistic work & crafts</h3>
     <p>UGX 75,000 / USD 20</p>
-    <button onclick="openDonate(75000)">Buy Crafts</button>
+    <button onclick="openDonate(20,'USD')">Buy Crafts</button>
 
 </div>
 
@@ -311,11 +311,11 @@ who need it most.
 <label>Amount</label>
 <input type="number" id="amount">
 
-<label>Currency</label>
-<select>
-  <option>UGX</option>
-  <option>USD</option>
+<select id="currency">
+  <option value="UGX">UGX</option>
+  <option value="USD">USD</option>
 </select>
+
 
 <div class="payments">
 
@@ -419,14 +419,25 @@ please submit your payment confirmation below.
 </footer>
 
 <script>
-function openDonate(amount) {
+function openDonate(amount, currency) {
   document.getElementById("donateSection").style.display = "block";
   document.getElementById("amount").value = amount;
+  document.getElementById("currency").value = currency;
+
+  // Update PayPal amount automatically if USD
+  if (currency === "USD") {
+    document.getElementById("paypalAmount").value = amount;
+  } else {
+    document.getElementById("paypalAmount").value = "";
+  }
+
   window.scrollTo({
     top: document.getElementById("donateSection").offsetTop,
     behavior: "smooth"
   });
 }
+</script>
+
 </script>
 <!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://wa.me/+256701735887" target="_blank" class="whatsapp-float">
@@ -458,6 +469,7 @@ function openDonate(amount) {
 
 </body>
 </html>
+
 
 
 
