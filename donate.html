@@ -460,7 +460,7 @@ function openDonate(amount, currency) {
 
   document.getElementById("paypalAmount").value =
     currency === 'USD' ? amount : (amount / 4000).toFixed(2);
-
+z
   window.scrollTo({
     top: document.getElementById("donateSection").offsetTop,
     behavior: "smooth"
@@ -471,7 +471,10 @@ function updateAmount() {
   const currency = document.getElementById("currency").value;
 
   if (currency === 'UGX') {
-    document.getElementById("amount").value = baseAmountUGX;
+   document
+  .getElementById("donateSection")
+  .scrollIntoView({ behavior: "smooth" });
+
   } else {
     document.getElementById("amount").value = (baseAmountUGX / 4000).toFixed(2);
     document.getElementById("paypalAmount").value =
@@ -510,6 +513,7 @@ function updateAmount() {
 
 </body>
 </html>
+
 
 
 
