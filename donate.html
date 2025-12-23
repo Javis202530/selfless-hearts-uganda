@@ -257,26 +257,9 @@ footer {
 
 <div class="payments">
 
-  <div class="payment-box">
-    <strong>Wise Transfer</strong><br>
-    Email: wise@selflessheartsug.org
-  </div>
-
-  <div class="payment-box">
-    <strong>Bank Transfer</strong><br>
-    Bank: Stanbic Bank Uganda<br>
-    Account Name: Selfless Hearts for the Needy – Uganda<br>
-    Account No: 123456789
-  </div>
-
-  <div class="payment-box">
-    <strong>Mobile Money</strong><br>
-    MTN / Airtel: +256 XXX XXX XXX
-  </div>
-
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
   <input type="hidden" name="cmd" value="_donations">
-  <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL_HERE">
+  <input type="hidden" name="business" value="selflessheartsug@gmail.com">
   <input type="hidden" name="currency_code" value="USD">
   <input type="hidden" name="item_name" value="Support Selfless Hearts for the Needy – Uganda">
 
@@ -303,46 +286,29 @@ After completing your payment using Wise, Bank Transfer, or Mobile Money,
 please submit your payment confirmation below.
 </p>
 
-<form action="mailto:selflessheartsug@gmail.com" method="post" enctype="text/plain">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 
-  <label>Full Name</label>
-  <input type="text" name="Name" placeholder="Your full name" required>
+  <input type="hidden" name="cmd" value="_donations">
+  <input type="hidden" name="business" value="selflessheartsug@gmail.com">
 
-  <label>Email / Phone</label>
-  <input type="text" name="Contact" placeholder="Email or phone number" required>
+  <input type="hidden" name="item_name" value="Support Selfless Hearts for the Needy – Uganda">
 
-  <label>Payment Method Used</label>
-  <select name="Payment Method" required>
-    <option>Wise</option>
-    <option>Bank Transfer</option>
-    <option>Mobile Money</option>
-    <option>PayPal</option>
-  </select>
-
-  <label>Amount Paid</label>
-  <input type="number" name="Amount Paid" required>
-
-  <p style="margin-top:15px;">
-    After clicking submit, your email app will open.  
-    Please <strong>attach your payment proof</strong> (screenshot or PDF) and send.
-  </p>
+  <input type="hidden" name="currency_code" id="paypalCurrency" value="USD">
+  <input type="hidden" name="amount" id="paypalAmount">
 
   <button type="submit" style="
-    margin-top:20px;
-    background:#0a6c5d;
-    color:white;
-    padding:12px;
+    background:#ffc439;
     border:none;
+    padding:14px;
     font-size:16px;
+    font-weight:bold;
     cursor:pointer;
     width:100%;
+    margin-top:15px;
   ">
-    Send Payment Confirmation
+    Donate with PayPal
   </button>
-
 </form>
-
-
 
 </div>
 
@@ -393,6 +359,44 @@ function openDonate(amount) {
   background-color: #1ebe5d;
 }
 </style>
+let baseAmountUGX = 0;
+const rate = 4000; // UGX to USD
+
+function openDonate(amount, currency) {
+  document.getElementById("donateSection").style.display = "block";
+
+  if (currency === 'USD') {
+    baseAmountUGX = amount * rate;
+    document.getElementById("currency").value = "USD";
+    document.getElementById("amount").value = amount;
+    document.getElementById("paypalAmount").value = amount;
+    document.getElementById("paypalCurrency").value = "USD";
+  } else {
+    baseAmountUGX = amount;
+    document.getElementById("currency").value = "UGX";
+    document.getElementById("amount").value = amount;
+    document.getElementById("paypalAmount").value = (amount / rate).toFixed(2);
+    document.getElementById("paypalCurrency").value = "USD";
+  }
+
+  document.getElementById("donateSection").scrollIntoView({ behavior: "smooth" });
+}
+
+function updateAmount() {
+  const currency = document.getElementById("currency").value;
+  const amountInput = document.getElementById("amount");
+
+  if (currency === "UGX") {
+    amountInput.value = baseAmountUGX;
+    document.getElementById("paypalAmount").value = (baseAmountUGX / rate).toFixed(2);
+    document.getElementById("paypalCurrency").value = "USD";
+  } else {
+    amountInput.value = (baseAmountUGX / rate).toFixed(2);
+    document.getElementById("paypalAmount").value = amountInput.value;
+    document.getElementById("paypalCurrency").value = "USD";
+  }
+}
 
 </body>
 </html>
+
