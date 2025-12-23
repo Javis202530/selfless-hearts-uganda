@@ -315,43 +315,6 @@ please submit your payment confirmation below.
 <p><strong>Every money counts. Thank you for standing with the needy ❤️</strong></p>
 
 </div>
-let baseAmountUGX = 0;
-const rate = 4000; // UGX to USD
-
-function openDonate(amount, currency) {
-  document.getElementById("donateSection").style.display = "block";
-
-  if (currency === 'USD') {
-    baseAmountUGX = amount * rate;
-    document.getElementById("currency").value = "USD";
-    document.getElementById("amount").value = amount;
-    document.getElementById("paypalAmount").value = amount;
-    document.getElementById("paypalCurrency").value = "USD";
-  } else {
-    baseAmountUGX = amount;
-    document.getElementById("currency").value = "UGX";
-    document.getElementById("amount").value = amount;
-    document.getElementById("paypalAmount").value = (amount / rate).toFixed(2);
-    document.getElementById("paypalCurrency").value = "USD";
-  }
-
-  document.getElementById("donateSection").scrollIntoView({ behavior: "smooth" });
-}
-
-function updateAmount() {
-  const currency = document.getElementById("currency").value;
-  const amountInput = document.getElementById("amount");
-
-  if (currency === "UGX") {
-    amountInput.value = baseAmountUGX;
-    document.getElementById("paypalAmount").value = (baseAmountUGX / rate).toFixed(2);
-    document.getElementById("paypalCurrency").value = "USD";
-  } else {
-    amountInput.value = (baseAmountUGX / rate).toFixed(2);
-    document.getElementById("paypalAmount").value = amountInput.value;
-    document.getElementById("paypalCurrency").value = "USD";
-  }
-}
 
 </div>
 
@@ -399,5 +362,6 @@ function openDonate(amount) {
   
 </body>
 </html>
+
 
 
