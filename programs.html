@@ -134,6 +134,50 @@
   border-radius: 5px;
   margin-bottom: 10px;
 }
+/* ===== IMPACT TABLE ===== */
+.impact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+}
+
+.impact-table th,
+.impact-table td {
+  border: 1px solid #ddd;
+  padding: 14px;
+  text-align: left;
+}
+
+.impact-table th {
+  background-color: #0a6c5d;
+  color: white;
+}
+
+.impact-table tr:nth-child(even) {
+  background-color: #f4f7f6;
+}
+
+/* ===== IMAGE GALLERY ===== */
+.program-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.program-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .program-gallery img {
+    height: 180px;
+  }
+}
 
 
   </style>
@@ -200,21 +244,33 @@
       </p>
     </div>
 
-    <div class="program-card">
-      <h3>Women & Youth Empowerment</h3>
-      <p>
-        Through skills training and mentorship, we empower women and youth to
-        become self-reliant and economically stable.
-      </p>
-    </div>
+    
+    <div>
 
-    <div class="program-card">
-      <h3>Community Development</h3>
-      <p>
-        We implement projects that improve livelihoods, sanitation, and overall
-        community wellbeing.
-      </p>
-    </div>
+<h2>Our Impact</h2>
+
+<table class="impact-table">
+  <tr>
+    <th>Area</th>
+    <th>Impact</th>
+  </tr>
+  <tr>
+    <td>Education</td>
+    <td>120+ children supported with school fees & supplies</td>
+  </tr>
+  <tr>
+    <td>Healthcare</td>
+    <td>85+ patients received medical support</td>
+  </tr>
+  <tr>
+    <td>Girls Empowerment</td>
+    <td>200+ girls supported with sanitary pads</td>
+  </tr>
+  <tr>
+    <td>Community Support</td>
+    <td>50+ families received food & essentials</td>
+  </tr>
+</table>
 
   </div>
 
@@ -223,7 +279,16 @@
     sustainable solutions that address both immediate needs and long-term growth.
   </div>
 
+<h2>Our Work in Pictures</h2>
+<p>Every photo tells a story of hope, dignity, and transformation.</p>
+
+<div class="program-gallery">
+  <img src="images/education.jpg" alt="Children supported with education">
+  <img src="images/healthcare.jpg" alt="Medical outreach support">
+  <img src="images/girls.jpg" alt="Girls receiving sanitary pads">
+  <img src="images/community.jpg" alt="Community food support">
 </div>
+
 
 <div class="cta">
   <h2>Support Our Programs</h2>
@@ -237,5 +302,6 @@
 
 </body>
 </html>
+
 
 
