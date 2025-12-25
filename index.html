@@ -164,16 +164,107 @@
 
   </style>
 </head>
+/* NAVIGATION */
+.navbar {
+  background: #0a6c5d;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+.donate-btn {
+  background: #ffc439;
+  padding: 8px 14px;
+  border-radius: 5px;
+  color: #000 !important;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #0a6c5d;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+}
 
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="programs.html">Programs</a>
-  <a href="donate.html">Donate</a>
-  <a href="contact.html">Contact</a>
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">Selfless Hearts Uganda</div>
+
+    <div class="menu-toggle" id="menu-toggle">
+      ☰
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="donate.html" class="donate-btn">Donate</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 </nav>
+
 
 <div class="hero">
 
@@ -252,6 +343,16 @@ Because someone cared, My life changed. Today,I give back.
 <footer>
 © Selfless Hearts for the Needy – Uganda
 </footer>
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+</script>
+<body>
+</html>
 
 
 
