@@ -161,19 +161,96 @@
   margin: 20px auto;
   border-radius: 6px;
 }
+    .main-nav {
+  background: #0a6c5d;
+  padding: 12px 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 45px;
+}
+
+.hamburger {
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+/* MENU */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #0a6c5d;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    text-align: center;
+  }
+}
+
 
   </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="programs.html">Programs</a>
-  <a href="donate.html">Donate</a>
-  <a href="contact.html">Contact</a>
+<nav class="main-nav">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="Selfless Hearts Uganda" />
+    </div>
+
+    <!-- HAMBURGER ICON -->
+    <div class="hamburger" id="menu-toggle">
+      ☰
+    </div>
+
+    <!-- MENU LINKS -->
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </div>
 </nav>
+
 
 <div class="hero">
 
@@ -253,6 +330,16 @@ Because someone cared, My life changed. Today,I give back.
 © Selfless Hearts for the Needy – Uganda
 </footer>
 
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+</script>
+ <body
+<html>
 
 
 
