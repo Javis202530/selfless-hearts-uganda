@@ -302,6 +302,23 @@ footer {
   ">
     Donate with PayPal
   </button>
+    
+<div class="payment-box">
+  <h3>Pay with Card (Visa / MasterCard)</h3>
+  <p>Secure card payment powered by Paystack</p>
+
+  <button onclick="payWithPaystack()" style="
+    background:#0a6c5d;
+    color:white;
+    padding:14px;
+    width:100%;
+    font-size:16px;
+    border:none;
+    cursor:pointer;
+  ">
+    Pay with Card
+  </button>
+</div>
 
 </div>
 
@@ -351,9 +368,30 @@ function openDonate(amount) {
   background-color: #1ebe5d;
 }
 </style>
-  
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script>
+function payWithPaystack() {
+  let handler = PaystackPop.setup({
+    key: 'pk_test_xxxxxxxxxxxxxxxxx', // 🔴 replace with your Paystack PUBLIC KEY
+    email: "donor@email.com",
+    amount: document.getElementById("amount").value * 100, // in kobo
+    currency: "UGX",
+    callback: function(response){
+        alert('Payment successful! Reference: ' + response.reference);
+    },
+    onClose: function(){
+        alert('Payment cancelled');
+    }
+  });
+  handler.openIframe();
+}
+</script>
+
+
 </body>
 </html>
+
 
 
 
